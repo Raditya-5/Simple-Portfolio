@@ -9,7 +9,7 @@
     <title>Raditya Putra Setiawan — Full Stack Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -36,7 +36,14 @@
 
     <!-- ========== HERO ========== -->
     <section class="hero" id="home">
-        <div class="hero-particles" id="particles"></div>
+        <!-- Neo-brutalist geometric decorations -->
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
         <div class="hero-container">
             <div class="hero-content">
                 <p class="hero-greeting animate-on-scroll">Hello, I'm</p>
@@ -71,14 +78,12 @@
                 </div>
             </div>
             <div class="hero-image-wrapper animate-on-scroll">
-                <div class="hero-image-ring"></div>
-                <div class="hero-image-glow"></div>
-                <img src="assets/profile.jpg" alt="Raditya Putra Setiawan" class="hero-image">
+                <img src="assets/developer-illustration.jpg" alt="Raditya Putra Setiawan — Developer Illustration" class="hero-image">
             </div>
         </div>
         <a href="#about" class="scroll-indicator" aria-label="Scroll down">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
             </div>
         </a>
     </section>
@@ -89,13 +94,11 @@
             <div class="section-header animate-on-scroll">
                 <p class="section-subtitle">Get To Know</p>
                 <h2 class="section-title">About Me</h2>
-                <div class="section-line"></div>
             </div>
             <div class="about-grid">
                 <div class="about-image-col animate-on-scroll">
                     <div class="about-image-card">
-                        <img src="assets/profile.jpg" alt="Raditya Putra Setiawan" class="about-image">
-                        <div class="about-image-overlay"></div>
+                        <img src="assets/developer-illustration.jpg" alt="Raditya Putra Setiawan — Developer Illustration" class="about-image">
                     </div>
                 </div>
                 <div class="about-content-col">
@@ -142,7 +145,6 @@
             <div class="section-header animate-on-scroll">
                 <p class="section-subtitle">What I Know</p>
                 <h2 class="section-title">Skills & Technologies</h2>
-                <div class="section-line"></div>
             </div>
             <div class="skills-grid">
                 <div class="skill-card animate-on-scroll" data-delay="0">
@@ -215,7 +217,6 @@
             <div class="section-header animate-on-scroll">
                 <p class="section-subtitle">My Recent Work</p>
                 <h2 class="section-title">Projects</h2>
-                <div class="section-line"></div>
             </div>
             <div class="projects-grid">
                 <div class="project-card animate-on-scroll" data-delay="0">
@@ -307,7 +308,6 @@
             <div class="section-header animate-on-scroll">
                 <p class="section-subtitle">Get In Touch</p>
                 <h2 class="section-title">Contact Me</h2>
-                <div class="section-line"></div>
             </div>
             <div class="contact-grid">
                 <div class="contact-info-col animate-on-scroll">
@@ -352,24 +352,20 @@
                 <div class="contact-form-col animate-on-scroll">
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
-                            <input type="text" id="formName" name="name" placeholder=" " required>
                             <label for="formName">Your Name</label>
-                            <span class="form-line"></span>
+                            <input type="text" id="formName" name="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="formEmail" name="email" placeholder=" " required>
                             <label for="formEmail">Your Email</label>
-                            <span class="form-line"></span>
+                            <input type="email" id="formEmail" name="email" placeholder="john@email.com" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="formSubject" name="subject" placeholder=" " required>
                             <label for="formSubject">Subject</label>
-                            <span class="form-line"></span>
+                            <input type="text" id="formSubject" name="subject" placeholder="Project Inquiry" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="formMessage" name="message" rows="5" placeholder=" " required></textarea>
                             <label for="formMessage">Your Message</label>
-                            <span class="form-line"></span>
+                            <textarea id="formMessage" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">
                             <i class="fas fa-paper-plane"></i> Send Message

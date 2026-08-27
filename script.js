@@ -1,6 +1,7 @@
 /* ============================================
    PORTFOLIO — Main JavaScript
    Raditya Putra Setiawan
+   Neo-Brutalism Edition
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks    = document.querySelectorAll('.nav-link');
     const backToTop   = document.getElementById('backToTop');
     const typedRole   = document.getElementById('typedRole');
-    const particles   = document.getElementById('particles');
     const contactForm = document.getElementById('contactForm');
 
     // ==========================================
@@ -54,30 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     typeRole();
 
     // ==========================================
-    // PARTICLES
-    // ==========================================
-    function createParticles() {
-        const count = 30;
-        for (let i = 0; i < count; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.width = (Math.random() * 4 + 2) + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
-            particle.style.animationDelay = (Math.random() * 10) + 's';
-            particle.style.opacity = Math.random() * 0.5 + 0.1;
-            particles.appendChild(particle);
-        }
-    }
-
-    createParticles();
-
-    // ==========================================
     // NAVBAR SCROLL
     // ==========================================
-    let lastScroll = 0;
-
     function handleNavbarScroll() {
         const scrollY = window.scrollY;
 
@@ -93,8 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             backToTop.classList.remove('visible');
         }
-
-        lastScroll = scrollY;
     }
 
     window.addEventListener('scroll', handleNavbarScroll, { passive: true });
@@ -104,8 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const sections = document.querySelectorAll('section[id]');
 
+    const NAVBAR_HEIGHT = 72; // navbar height (64px) + 8px breathing room
+
     function highlightNavLink() {
-        const scrollY = window.scrollY + 120;
+        const scrollY = window.scrollY + NAVBAR_HEIGHT + 1;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -144,13 +122,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // SMOOTH SCROLL FOR NAV LINKS
+    // Precise offset calculation for fixed navbar
     // ==========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
             if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = targetPosition - NAVBAR_HEIGHT;
+
+                window.scrollTo({
+                    top: Math.max(0, offsetPosition),
+                    behavior: 'smooth'
+                });
             }
         });
     });
@@ -164,10 +150,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
     // SCROLL ANIMATIONS (Intersection Observer)
+    // Snappy, punchy entrance for neo-brutalism
     // ==========================================
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -221,11 +208,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show sending state
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         btn.disabled = true;
+        btn.style.opacity = '0.7';
 
         // Simulate sending (replace with real backend later)
         setTimeout(() => {
             btn.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
-            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            btn.style.background = '#00C853';
+            btn.style.opacity = '1';
 
             setTimeout(() => {
                 btn.innerHTML = originalHTML;
